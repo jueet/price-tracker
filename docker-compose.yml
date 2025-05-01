@@ -1,0 +1,7 @@
+services:
+  scraper:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./urls.txt:/app/urls.txt
+    command: python scraper.py
