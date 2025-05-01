@@ -32,7 +32,11 @@ def get_price_and_title(html):
     title_element = soup.select_one('p.tituloProducto')
     title = title_element.text.strip() if title_element else "Título no encontrado"
 
-    return price, title
+    # Extraer URL de la imagen
+    image_element = soup.select_one('img#imgPortada')
+    image_url = image_element['src'] if image_element and 'src' in image_element.attrs else image_element.get('data-src') if image_element else "URL de imagen no encontrada"
+
+    return price, title, image_url
 
 def hash_url(url):
     return hashlib.md5(url.encode()).hexdigest()
@@ -61,7 +65,7 @@ def main():
         try:
             response = requests.get(url, headers=HEADERS)
             response.raise_for_status()
-            price, title = get_price_and_title(response.text)
+            price, title, image_url = get_price_and_title(response.text)
             if price is None:
                 print(f"No se encontró precio en {url}")
                 continue
@@ -77,6 +81,7 @@ def main():
             updated_data[uid] = {
                 "url": url,
                 "title": title,
+                "image_url": image_url,
                 "history": history
             }
 
