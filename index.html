@@ -40,7 +40,13 @@
         document.addEventListener('DOMContentLoaded', async function () {
             const productTable = document.getElementById('productTable');
 
-            const products = await fetch('/data/precios.json') // Replace with your API endpoint
+            // For GitHub Pages, use a relative path that works with the repository structure
+            const repoName = 'price-tracker'; // Change this to your actual repository name
+            const basePath = location.hostname === 'localhost' || location.hostname === '127.0.0.1' 
+                ? '' 
+                : `/${repoName}`;
+                
+            const products = await fetch(`${basePath}/data/precios.json`)
                 .then(response => response.json())
                 .catch(error => console.error('Error fetching products:', error));
 
