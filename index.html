@@ -33,7 +33,18 @@
             <h1 class="text-center">Price Tracker</h1>
             <p class="text-center">Track the price of your favorite products!</p>
             <div class="mb-3">
-                <input type="text" id="searchInput" class="form-control" placeholder="Search for products...">
+                <div class="row">
+                    <div class="col-12 col-md-9">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search for products...">
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <select name="changeType" id="changeType" class="form-select">
+                            <option value="all">All</option>
+                            <option value="increase">Increase</option>
+                            <option value="decrease">Decrease</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="productGrid">
                 <!-- Product cards will be inserted here -->
@@ -53,6 +64,21 @@
             cards.forEach(card => {
                 const title = card.querySelector('.card-title a').textContent.toLowerCase();
                 if (title.includes(filter)) {
+                    card.parentElement.style.display = '';
+                } else {
+                    card.parentElement.style.display = 'none';
+                }
+            });
+        });
+
+        const changeTypeSelect = document.getElementById('changeType');
+        changeTypeSelect.addEventListener('change', function () {
+            const selectedValue = changeTypeSelect.value;
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const priceChange = card.querySelector('.card-body .d-flex:nth-child(3) strong').textContent;
+                if (selectedValue === 'all' || (selectedValue === 'increase' && priceChange.includes('↑')) || (selectedValue === 'decrease' && priceChange.includes('↓'))) {
                     card.parentElement.style.display = '';
                 } else {
                     card.parentElement.style.display = 'none';
