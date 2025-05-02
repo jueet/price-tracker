@@ -86,16 +86,16 @@
 
             // Populate the table with product data
             productsData.forEach(product => {
-                let latestDate = new Date(product.history[0]['timestamp']);
-                let latestPrice = product.history[0]['price'];
+                let latestDate = new Date(product.history.at(-1)['timestamp']);
+                let latestPrice = product.history.at(-1)['price'];
                 let previousDate, previousPrice, priceDifference, priceChange;
 
                 latestPrice = latestPrice.replace(/[^0-9.-]+/g, '');
                 latestPrice = parseFloat(latestPrice);
 
-                if (product.history[1]) {
-                    previousDate = new Date(product.history[1]['timestamp']);
-                    previousPrice = product.history[1]['price'];
+                if (product.history.at(-2)) {
+                    previousDate = new Date(product.history.at(-2)['timestamp']);
+                    previousPrice = product.history.at(-2)['price'];
                     previousPrice = previousPrice.replace(/[^0-9.-]+/g, '');
                     previousPrice = parseFloat(previousPrice);
                     priceDifference = latestPrice - previousPrice;
