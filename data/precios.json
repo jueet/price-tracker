@@ -350,5 +350,93 @@
         "price": "$ 189.00"
       }
     ]
+  },
+  "c376186f7220da0a195f902412aa442a": {
+    "url": "https://www.buscalibre.com.mx/libro-el-consultor/9786073913379/p/57031216",
+    "title": "El Consultor",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/5e/4b/5e4baa252f0ad5677f035cfcf32d1fef.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:13.738998+00:00",
+        "price": "$ 318.00"
+      }
+    ]
+  },
+  "00bf500f3d11decd46f5821faf16a657": {
+    "url": "https://www.buscalibre.com.mx/libro-la-policia-de-la-memoria/9786287577282/p/63546915",
+    "title": "La Policía de la Memoria",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/86/eb/86eb4fee8a1b042b5d8c5ee6e6d9035d.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:13.973354+00:00",
+        "price": "$ 335.62"
+      }
+    ]
+  },
+  "d9547278f1600d48beb51b5b921fc60b": {
+    "url": "https://www.buscalibre.com.mx/libro-la-policia-de-la-memoria/9788411071116/p/54051574",
+    "title": "La Policía de la Memoria",
+    "image_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/e5/f4/e5f4757d6941805d98fbbf425a56d585.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:14.219683+00:00",
+        "price": "$ 379.37"
+      }
+    ]
+  },
+  "94e12b327ad256ecb215d54d696d0854": {
+    "url": "https://www.buscalibre.com.mx/libro-la-policia-de-la-memoria/9786070778421/p/53550722",
+    "title": "La Policía de la Memoria",
+    "image_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/0a/8f/0a8f752ffc7311a00c42d8e594c3ef90.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:14.439398+00:00",
+        "price": "$ 498.00"
+      }
+    ]
+  },
+  "6908ce86099f70130c03c678017e0968": {
+    "url": "https://www.buscalibre.com.mx/libro-el-tango-de-las-almas-errantes/9788412089868/p/54388069",
+    "title": "El Tango de las Almas Errantes",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/ec/72/ec72c87400d49116ddbfe3b691251420.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:14.723591+00:00",
+        "price": "$ 479.29"
+      }
+    ]
+  },
+  "ae239b0d97724902258f257d96c8ed48": {
+    "url": "https://www.buscalibre.com.mx/libro-todas-las-hadas-del-reino-edicion-limitada/9788413144603/p/55963065",
+    "title": "Todas las Hadas del Reino (Edicion Limitada)",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/da/bc/dabc50cafaa67c7d84593a1340db93e0.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:14.895280+00:00",
+        "price": "$ 379.14"
+      }
+    ]
+  },
+  "5fc8b32e421b9cced75aaeeb3e689022": {
+    "url": "https://www.buscalibre.com.mx/libro-estuche-con-todas-las-hadas-del-reino-todos-los-hombres-del-rey/9788419975423/p/62044104",
+    "title": "Estuche Con: Todas las Hadas del Reino; Todos los Hombres del rey",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/f4/e8/f4e883f4538a1de9d129211413a941dc.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:15.194617+00:00",
+        "price": "$ 880.77"
+      }
+    ]
+  },
+  "8768dcaa1c484fe07d202f12a69b3add": {
+    "url": "https://www.buscalibre.com.mx/libro-los-jardines-de-la-luna-gardens-of-the-moon/9788466660877/p/48168386",
+    "title": "Los Jardines de la Luna / Gardens of the Moon",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/bc/de/bcde339a74378c7db2f862f987577876.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-02T08:12:15.494830+00:00",
+        "price": "$ 650.08"
+      }
+    ]
   }
 }
