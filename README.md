@@ -6,8 +6,8 @@ A web scraper that tracks book prices from Buscalibre México and stores price h
 
 - Scrapes book prices and titles from Buscalibre México URLs
 - Stores price history in JSON format
-- Runs automatically every 12 hours via GitHub Actions
-- Dockerized for easy deployment
+- Runs automatically every 8 hours via GitHub Actions
+- Dockerized for easy deployment (and testing in MacOS)
 - Handles multiple URLs from a text file
 
 ## Setup
@@ -21,7 +21,7 @@ A web scraper that tracks book prices from Buscalibre México and stores price h
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/jueet/price-tracker.git
 cd price-tracker
 ```
 
@@ -48,9 +48,11 @@ python scraper.py
 docker compose up
 ```
 
+And then open [localhost](http://127.0.0.1:5500/index.html) to watch the results from the scrapping.
+
 ### Using GitHub Actions
 
-The scraper runs automatically every 12 hours through GitHub Actions. You can also trigger it manually through the Actions tab in your repository.
+The scraper runs automatically every 8 hours through GitHub Actions. You can also trigger it manually through the Actions tab in your repository.
 
 ## Data Storage
 
@@ -61,6 +63,7 @@ Price history is stored in `data/precios.json` with the following structure:
   "<url-hash>": {
     "url": "book-url",
     "title": "book-title",
+    "image_url": "book-cover-url",
     "history": [
       {
         "timestamp": "ISO-8601-timestamp",
@@ -70,6 +73,29 @@ Price history is stored in `data/precios.json` with the following structure:
   }
 }
 ```
+
+## Working
+
+### Real-time Search Filter Implementation
+            
+This JavaScript code implements a real-time search filter functionality:
+- Listens for input changes in the search field
+- Filters product cards based on the search term
+- Shows/hides cards by comparing product titles with search input
+            
+Elements:
+- searchInput: Input field for search terms
+- cards: Collection of product card elements with class 'card'
+            
+Functionality:
+1. Gets search input value and converts to lowercase
+2. Iterates through all product cards
+3. Compares card title text with search filter
+4. Shows cards that match the filter, hides others
+            
+Notes:
+- Case-insensitive search
+- Uses parent element display property for visibility control
 
 ## License
 

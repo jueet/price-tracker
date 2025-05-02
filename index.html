@@ -29,9 +29,12 @@
 <body>
 
     <div class="container">
-        <div class="py-3">
+        <div class="py-5">
             <h1 class="text-center">Price Tracker</h1>
             <p class="text-center">Track the price of your favorite products!</p>
+            <div class="mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for products...">
+            </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="productGrid">
                 <!-- Product cards will be inserted here -->
             </div>
@@ -42,6 +45,21 @@
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
     <script>
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function () {
+            const filter = searchInput.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title a').textContent.toLowerCase();
+                if (title.includes(filter)) {
+                    card.parentElement.style.display = '';
+                } else {
+                    card.parentElement.style.display = 'none';
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', async function () {
             const productGrid = document.getElementById('productGrid');
 
