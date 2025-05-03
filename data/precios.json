@@ -210,6 +210,10 @@
       {
         "timestamp": "2025-05-02T00:42:44.897661+00:00",
         "price": "$ 359.00"
+      },
+      {
+        "timestamp": "2025-05-03T00:41:32.805503+00:00",
+        "price": "$ 653.17"
       }
     ]
   },
@@ -225,6 +229,17 @@
       {
         "timestamp": "2025-05-02T16:10:51.465781+00:00",
         "price": "$ 619.00"
+      }
+    ]
+  },
+  "896a709b11f4668ad89d7ab550fd0de9": {
+    "url": "https://www.buscalibre.com.mx/libro-el-jilguero/9788466338837/p/48108166",
+    "title": "El Jilguero",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/a2/e9/a2e9ce12883f05c18dda2de129fd9a4e.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-03T00:41:33.477933+00:00",
+        "price": "$ 448.10"
       }
     ]
   },
@@ -390,6 +405,10 @@
       {
         "timestamp": "2025-05-02T08:12:13.973354+00:00",
         "price": "$ 335.62"
+      },
+      {
+        "timestamp": "2025-05-03T00:41:37.956893+00:00",
+        "price": "$ 386.26"
       }
     ]
   },
