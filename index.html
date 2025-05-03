@@ -9,7 +9,7 @@
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         .contenedor-img {
-            height: 180px;
+            height: 100px;
             width: 100%;
             /* o una medida fija */
             overflow: hidden;
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="productGrid">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="productGrid">
                 <!-- Product cards will be inserted here -->
             </div>
         </div>
@@ -77,7 +77,7 @@
             const cards = document.querySelectorAll('.card');
 
             cards.forEach(card => {
-                const priceChange = card.querySelector('.card-body .d-flex:nth-child(3) strong').textContent;
+                const priceChange = card.querySelector('.card-body .d-flex:nth-child(4) strong').textContent;
                 if (selectedValue === 'all' || (selectedValue === 'increase' && priceChange.includes('↑')) || (selectedValue === 'decrease' && priceChange.includes('↓'))) {
                     card.parentElement.style.display = '';
                 } else {
@@ -112,31 +112,49 @@
 
             // Populate the table with product data
             productsData.forEach(product => {
-                let latestDate = new Date(product.history.at(-1)['timestamp']);
-                let latestPrice = product.history.at(-1)['price'];
-                let previousDate, previousPrice, priceDifference, priceChange;
+                // Get price history indices
+                const firstEntry = product.history[0];
+                const latestEntry = product.history.at(-1);
+                const prevEntry = product.history.length > 1 ? product.history.at(-2) : null;
 
-                latestPrice = latestPrice.replace(/[^0-9.-]+/g, '');
-                latestPrice = parseFloat(latestPrice);
+                // Parse prices
+                const parsePrice = p => parseFloat((p || '').replace(/[^0-9.-]+/g, ''));
 
-                if (product.history.at(-2)) {
-                    previousDate = new Date(product.history.at(-2)['timestamp']);
-                    previousPrice = product.history.at(-2)['price'];
-                    previousPrice = previousPrice.replace(/[^0-9.-]+/g, '');
-                    previousPrice = parseFloat(previousPrice);
-                    priceDifference = latestPrice - previousPrice;
-                    priceChange = priceDifference > 0 ?
-                        '<span class="text-danger">↑ Increase</span>' :
-                        '<span class="text-success">↓ Decrease</span>';
+                const firstPrice = firstEntry ? parsePrice(firstEntry.price) : null;
+                const latestPrice = latestEntry ? parsePrice(latestEntry.price) : null;
+                const prevPrice = prevEntry ? parsePrice(prevEntry.price) : null;
+
+                // Calculate differences
+                const diffFirstPrev = (prevPrice !== null && firstPrice !== null) ? prevPrice - firstPrice : null;
+                const diffPrevLatest = (latestPrice !== null && prevPrice !== null) ? latestPrice - prevPrice : null;
+                const diffFirstLatest = (latestPrice !== null && firstPrice !== null) ? latestPrice - firstPrice : null;
+
+                // Price changes
+                let priceChange = null;
+                if (diffPrevLatest !== null) {
+                    priceChange = diffPrevLatest > 0
+                        ? '<span class="text-danger">↑ Increase</span>'
+                        : diffPrevLatest < 0
+                            ? '<span class="text-success">↓ Decrease</span>'
+                            : '<span class="text-muted">No Change</span>';
                 }
 
-                latestDate = latestDate.toLocaleDateString('es-MX', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
+                // Dates
+                const formatDate = d => new Date(d).toLocaleDateString('es-MX', {
+                    year: 'numeric', month: '2-digit', day: '2-digit',
+                    hour: '2-digit', minute: '2-digit'
                 });
+
+                const firstDate = firstEntry ? formatDate(firstEntry.timestamp) : 'N/A';
+                const latestDate = latestEntry ? formatDate(latestEntry.timestamp) : 'N/A';
+                const prevDate = prevEntry ? formatDate(prevEntry.timestamp) : 'N/A';
+
+                const formatDiff = diff =>
+                    diff === null ? '' :
+                        diff === 0 ? '<span class="text-muted ms-2">(=)</span>' :
+                            diff > 0
+                                ? `<span class="text-danger ms-2">(+${diff.toFixed(2)})</span>`
+                                : `<span class="text-success ms-2">(${diff.toFixed(2)})</span>`;
 
                 const card = document.createElement('div');
                 card.className = 'col';
@@ -149,25 +167,41 @@
                             <h5 class="card-title"><a href="${product.url}" target="_blank" class="text-decoration-none">${product.title}</a></h5>
                             <div class="mt-3">
                                 <div class="d-flex justify-content-between">
+                                    <span>First Price:</span>
+                                    <span>
+                                        <strong>$${firstPrice !== null ? firstPrice : 'N/A'}</strong>
+                                        ${formatDiff(null)}
+                                    </span>
+                                </div>
+                                <div class="d-flex justify-content-between">
                                     <span>Previous Price:</span>
-                                    <strong>$${previousPrice || 'N/A'}</strong>
+                                    <span>
+                                        <strong>$${prevPrice !== null ? prevPrice : 'N/A'}</strong>
+                                        ${formatDiff(diffFirstPrev)}
+                                    </span>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <span>Current Price:</span>
-                                    <strong>$${latestPrice}</strong>
+                                    <span>
+                                        <strong>$${latestPrice !== null ? latestPrice : 'N/A'}</strong>
+                                        ${formatDiff(diffPrevLatest)}
+                                    </span>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <span>Change:</span>
-                                    <strong>${priceChange || 'N/A'}</strong>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <span>Difference:</span>
-                                    <strong>${priceDifference ? '$' + Math.abs(priceDifference).toFixed(2) : 'N/A'}</strong>
+                                    <span>Total Change:</span>
+                                    <span>
+                                        <strong>${priceChange || 'N/A'}</strong>
+                                        ${formatDiff(diffFirstLatest)}
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer text-muted">
-                            <small>Last updated:<br> ${latestDate}</small>
+                        <div class="card-footer text-muted d-none">
+                            <small>
+                                First: ${firstDate}<br>
+                                Previous: ${prevDate}<br>
+                                Last updated: ${latestDate}
+                            </small>
                         </div>
                     </div>
                 `;
