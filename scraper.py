@@ -26,7 +26,7 @@ def get_price_and_title(html):
     
     # Extraer precio
     price_element = soup.select_one('#detallePrecio .precio')
-    price = price_element.text.strip() if price_element else None
+    price = price_element.text.strip().replace('$', '').strip() if price_element else None
 
     # Extraer título
     title_element = soup.select_one('p.tituloProducto')
