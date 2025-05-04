@@ -641,5 +641,60 @@
         "price": "650.08"
       }
     ]
+  },
+  "6253ae8cd61a5c7e049a0153facb8a44": {
+    "url": "https://www.buscalibre.com.mx/libro-aventura-a-cuentagotas/9786071678393/p/55530449",
+    "title": "Aventura a Cuentagotas",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/75/b5/75b576d3c8741e8f1fa67573625181f8.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-04T00:48:35.160052+00:00",
+        "price": "161.50"
+      }
+    ]
+  },
+  "9a6b57b577c7f89c0eb62085f5bf9455": {
+    "url": "https://www.buscalibre.com.mx/libro-el-acuanauta/9786071678423/p/55530470",
+    "title": "El Acuanauta",
+    "image_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/59/9a/599a9bd7c6e0c7205e6c40930cc468f2.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-04T00:48:35.667458+00:00",
+        "price": "184.15"
+      }
+    ]
+  },
+  "b601693dbdde235005f3f599085cf4b8": {
+    "url": "https://www.buscalibre.com.mx/libro-preparense/9789583059148/p/52201880",
+    "title": "¡prepárense!",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/9c/64/9c6493bf9b6b0c490f80892e0bf6de04.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-04T00:48:36.171066+00:00",
+        "price": "304.93"
+      }
+    ]
+  },
+  "b7b1f909dcdd111294df462bbebf7bbd": {
+    "url": "https://www.buscalibre.com.mx/libro-el-fantasma-de-anya-no/9788467934601/p/51475870",
+    "title": "El Fantasma de Anya (No)",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/72/14/72142be1e57e4a7f28c9b338b7231593.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-04T00:48:36.652931+00:00",
+        "price": "465.49"
+      }
+    ]
+  },
+  "ef27777849668915e495c1b2a68ba2f3": {
+    "url": "https://www.buscalibre.com.mx/libro-anya-s-ghost/9781596435520/p/4364279",
+    "title": "Anya's Ghost (en Inglés)",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/89/1b/891b3184eae2d99cd71c1e89627f17aa.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-04T00:48:37.239226+00:00",
+        "price": "389.48"
+      }
+    ]
   }
 }
