@@ -8,3 +8,9 @@ export type ProductRaw = {
 };
 
 export type Product = ProductRaw & { id: string };
+
+export enum SelectOption {
+    All = "all",
+    Increase = "increase",
+    Decrease = "decrease",
+}
