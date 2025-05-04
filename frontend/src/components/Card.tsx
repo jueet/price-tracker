@@ -1,25 +1,14 @@
 import React from 'react';
 import FormatDiff from './FormatDiff';
 import DateDisplayer from './DateDisplayer';
-
-type ProductEntry = {
-  price: string;
-  timestamp: string;
-};
-
-type Product = {
-  title: string;
-  url: string;
-  history: ProductEntry[];
-};
+import { Product } from '../types';
 
 type Props = {
   product: Product;
 };
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-  const title =
-    product.title.length > 32 ? product.title.slice(0, 32) + '...' : product.title;
+  const title = product.title.length > 32 ? product.title.slice(0, 32) + '...' : product.title;
 
   const firstEntry = product.history[0];
   const latestEntry = product.history[product.history.length - 1];
@@ -52,7 +41,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   const prevDate = prevEntry ? formatDate(prevEntry.timestamp) : 'N/A';
 
   return (
-    <div className="card bg-base-100 w-96 shadow-sm rounded-2xl border-2 border-base-300">
+    <div className="card bg-base-100 w-full shadow-sm rounded border border-gray-300">
       <div className="bg-base-500 p-4">
         <h2 className="text-xl font-bold">
           <a
@@ -69,21 +58,21 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             <div className="flex justify-between">
               <span>First Price:</span>
               <span className="flex">
-                {firstPrice}
+                <span className='font-bold'>{firstPrice}</span>
                 <FormatDiff className="ms-1" diff={diffFirstPrev} />
               </span>
             </div>
             <div className="flex justify-between">
               <span>Latest Price:</span>
               <span className="flex">
-                {latestPrice}
+                <span className='font-bold'>{latestPrice}</span>
                 <FormatDiff className="ms-1" diff={diffFirstLatest} />
               </span>
             </div>
             <div className="flex justify-between">
               <span>Previous Price:</span>
               <span className="flex">
-                {prevPrice}
+                <span className='font-bold'>{prevPrice}</span>
                 <FormatDiff className="ms-1" diff={diffPrevLatest} />
               </span>
             </div>
