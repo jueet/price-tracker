@@ -41,11 +41,10 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   const prevDate = prevEntry ? formatDate(prevEntry.timestamp) : 'N/A';
 
   return (
-    <div className="card bg-base-100 w-full shadow-sm rounded border border-gray-300">
+    <div className="card bg-base-100 w-full shadow-sm rounded border border-gray-300 hover:shadow-2xl hover:scale-105 transition-transform duration-300 hover:bg-gray-800 hover:text-white">
       <div className="bg-base-500 p-4">
         <h2 className="text-xl font-bold">
           <a
-            className="hover:text-emerald-500"
             href={product.url}
             target="_blank"
             rel="noopener noreferrer"
