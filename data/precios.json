@@ -222,25 +222,6 @@
       }
     ]
   },
-  "8745efeb19dcabcf3465d09d54fee3da": {
-    "url": "https://www.buscalibre.com.mx/libro-el-guerrero-a-la-sombra-del-cerezo/9788466352840/p/52298538",
-    "title": "El Guerrero a la Sombra del Cerezo",
-    "image_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/13/73/1373a2e37f5ed56f918646a462d7d03b.jpg",
-    "history": [
-      {
-        "timestamp": "2025-05-02T00:42:44.010853+00:00",
-        "price": "$ 413.62"
-      },
-      {
-        "timestamp": "2025-05-03T08:10:24.127410+00:00",
-        "price": "413.62"
-      },
-      {
-        "timestamp": "2025-05-05T16:11:23.987899+00:00",
-        "price": "454.98"
-      }
-    ]
-  },
   "1d41ab79fe38a1815cda66b3633d41c3": {
     "url": "https://www.buscalibre.com.mx/libro-hay-quienes-eligen-la-oscuridad/9789878474113/p/53949607",
     "title": "Hay Quienes Eligen la Oscuridad",
@@ -310,6 +291,10 @@
       {
         "timestamp": "2025-05-03T08:10:25.300108+00:00",
         "price": "653.17"
+      },
+      {
+        "timestamp": "2025-05-06T08:13:18.435302+00:00",
+        "price": "635.67"
       }
     ]
   },
