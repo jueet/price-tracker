@@ -23,12 +23,29 @@
             /* Esto hace que la imagen se recorte para cubrir el contenedor */
             display: block;
         }
+
+        .hand-cursor {
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
 <body>
 
     <div class="container">
+        <!-- <div class="py-5">
+            <div class="ro">
+                <div class="col-12 col" id="chartContainer">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div> -->
         <div class="py-5">
             <h1 class="text-center">Price Tracker</h1>
             <p class="text-center">Track the price of your favorite products!</p>
@@ -49,12 +66,30 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="productGrid">
                 <!-- Product cards will be inserted here -->
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="chartModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="chartModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', function () {
@@ -111,7 +146,7 @@
             console.log(productsData);
 
             // Populate the table with product data
-            productsData.forEach(product => {
+            productsData.forEach((product, idx) => {
                 // Get price history indices
                 const firstEntry = product.history[0];
                 const latestEntry = product.history.at(-1);
@@ -159,7 +194,7 @@
                 const card = document.createElement('div');
                 card.className = 'col';
                 card.innerHTML = `
-                    <div class="card h-100">
+                    <div class="card h-100 hand-cursor" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div class="contenedor-img">
                             <img src="${product.image_url}" alt="${product.title}">
                         </div>
@@ -205,9 +240,62 @@
                         </div>
                     </div>
                 `;
+                card.addEventListener('click', () => renderChart(product));
                 productGrid.appendChild(card);
+
+                if (idx === 0) renderChart(product);
             });
         });
+
+        let chartInstance = null; // Store Chart.js instance globally
+
+        function renderChart(product) {
+            const modalTitle = document.getElementById('chartModalLabel');
+            modalTitle.textContent = product.title;
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const labels = product.history.map(entry =>
+                new Date(entry.timestamp).toLocaleDateString('es-MX', {
+                    year: '2-digit', month: '2-digit', day: '2-digit',
+                    hour: '2-digit', minute: '2-digit'
+                })
+            );
+            const data = product.history.map(entry =>
+                parseFloat((entry.price || '').replace(/[^0-9.-]+/g, ''))
+            );
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: product.title,
+                        data: data,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        fill: true,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: true },
+                        title: { display: true, text: 'Price History' }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: { display: true, text: 'Price (MXN)' }
+                        }
+                    }
+                }
+            });
+        }
     </script>
 </body>
 
