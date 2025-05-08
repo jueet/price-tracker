@@ -1,33 +1,3 @@
-const searchInput = document.getElementById('searchInput');
-searchInput.addEventListener('input', function () {
-    const filter = searchInput.value.toLowerCase();
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        const title = card.querySelector('.card-title a').textContent.toLowerCase();
-        if (title.includes(filter)) {
-            card.parentElement.style.display = '';
-        } else {
-            card.parentElement.style.display = 'none';
-        }
-    });
-});
-
-const changeTypeSelect = document.getElementById('changeType');
-changeTypeSelect.addEventListener('change', function () {
-    const selectedValue = changeTypeSelect.value;
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        const priceChange = card.querySelector('.card-body .d-flex:nth-child(4) strong').textContent;
-        if (selectedValue === 'all' || (selectedValue === 'increase' && priceChange.includes('↑')) || (selectedValue === 'decrease' && priceChange.includes('↓'))) {
-            card.parentElement.style.display = '';
-        } else {
-            card.parentElement.style.display = 'none';
-        }
-    });
-});
-
 document.addEventListener('DOMContentLoaded', async function () {
     const productGrid = document.getElementById('productGrid');
 
@@ -50,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         };
     });
 
-    console.log(productsData);
+    // console.log(productsData);
 
     // Populate the table with product data
     productsData.forEach((product, idx) => {
@@ -203,3 +173,26 @@ function renderChart(product) {
         }
     });
 }
+
+// Search and filter functionality
+const changeTypeSelect = document.getElementById('changeType');
+const searchInput = document.getElementById('searchInput');
+
+function filterCards() {
+    const searchQuery = searchInput.value.toLowerCase();
+    const selectedValue = changeTypeSelect.value;
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        const title = card.querySelector('.card-title a').textContent.toLowerCase();
+        const priceChange = card.querySelector('.card-body .d-flex:nth-child(4) strong').textContent;
+
+        if (title.includes(searchQuery) && (selectedValue === 'all' || (selectedValue === 'increase' && priceChange.includes('↑')) || (selectedValue === 'decrease' && priceChange.includes('↓')))) {
+            card.parentElement.style.display = '';
+        } else {
+            card.parentElement.style.display = 'none';
+        }
+    });
+}
+searchInput.addEventListener('input', filterCards);
+changeTypeSelect.addEventListener('change', filterCards);
