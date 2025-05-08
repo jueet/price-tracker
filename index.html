@@ -28,10 +28,14 @@
             cursor: pointer;
         }
 
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            /* Añadido para la animación */
+        }
+
         .card:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateX(-8px) translateY(-8px);
+            box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -196,7 +200,7 @@
                 card.innerHTML = `
                     <div class="card h-100 hand-cursor" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div class="contenedor-img">
-                            <img src="${product.image_url}" alt="${product.title}">
+                            <img src="${product.image_url}" alt="${product.title}" loading="lazy">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><a href="${product.url}" target="_blank" class="text-decoration-none">${product.title}</a></h5>
