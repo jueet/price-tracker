@@ -350,33 +350,6 @@
       }
     ]
   },
-  "fc99d7f251816dd52e635ced73160679": {
-    "url": "https://www.buscalibre.com.mx/libro-la-casa-de-los-suicidios/9789878474465/p/55579779",
-    "title": "La Casa de los Suicidios",
-    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/80/59/8059f6342c39d7a7bef209d12cb2534d.jpg",
-    "history": [
-      {
-        "timestamp": "2025-05-02T00:42:44.897661+00:00",
-        "price": "$ 359.00"
-      },
-      {
-        "timestamp": "2025-05-03T00:41:32.805503+00:00",
-        "price": "$ 653.17"
-      },
-      {
-        "timestamp": "2025-05-03T08:10:25.300108+00:00",
-        "price": "653.17"
-      },
-      {
-        "timestamp": "2025-05-06T08:13:18.435302+00:00",
-        "price": "635.67"
-      },
-      {
-        "timestamp": "2025-05-07T16:11:21.112427+00:00",
-        "price": "359.00"
-      }
-    ]
-  },
   "586278f38f988a7f57517a856e43fc8e": {
     "url": "https://www.buscalibre.com.mx/libro-el-jilguero/9786073134033/p/46811388",
     "title": "El Jilguero",
@@ -977,6 +950,10 @@
       {
         "timestamp": "2025-05-10T00:41:15.925477+00:00",
         "price": "395.00"
+      },
+      {
+        "timestamp": "2025-05-12T16:13:07.362681+00:00",
+        "price": "390.00"
       }
     ]
   },
