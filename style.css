@@ -1,0 +1,58 @@
+.contenedor-img {
+    height: 100px;
+    width: 100%;
+    /* o una medida fija */
+    overflow: hidden;
+    position: relative;
+}
+
+.contenedor-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Esto hace que la imagen se recorte para cubrir el contenedor */
+    display: block;
+}
+
+.hand-cursor {
+    cursor: pointer;
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Añadido para la animación */
+}
+
+/* .card:hover {
+    transform: translateX(-8px) translateY(-8px);
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+} */
+
+.current-price-section {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.price-change {
+    font-size: 0.9rem;
+}
+
+.price-stats .bg-light {
+    transition: background-color 0.2s;
+}
+
+.price-stats .bg-light:hover {
+    background-color: #e9ecef !important;
+}
+
+.progress {
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.total-change {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
