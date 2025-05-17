@@ -80,59 +80,57 @@ document.addEventListener('DOMContentLoaded', async function () {
         const card = document.createElement('div');
         card.className = 'col';
         card.innerHTML = `
-                    <div class="card h-100 hand-cursor" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="contenedor-img">
-                            <img src="${product.image_url}" alt="${product.title}" loading="lazy">
+            <div class="card h-100 hand-cursor" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div class="contenedor-img">
+                    <img src="${product.image_url}" alt="${product.title}" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="${product.url}" target="_blank" class="text-decoration-none">${product.title}</a>
+                    </h5>
+                    
+                    <div class="current-price-section text-center my-3 p-2 border-bottom">
+                        <div class="fs-4">$${latestPrice !== null ? latestPrice.toFixed(2) : 'N/A'}</div>
+                        <div class="price-change">
+                            ${priceChange || 'N/A'} ${formatDiff(diffPrevLatest)}
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="${product.url}" target="_blank" class="text-decoration-none">${product.title}</a></h5>
-                            <div class="mt-3">
-                                <div class="d-flex justify-content-between">
-                                    <span>First Price:</span>
-                                    <span>
-                                        <strong>$${firstPrice !== null ? firstPrice : 'N/A'}</strong>
-                                        ${formatDiff(null)}
-                                    </span>
+                    </div>
+        
+                    <div class="price-stats">
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded">
+                                    <small class="text-muted d-block">Lowest</small>
+                                    <strong>$${lowestPrice !== null ? lowestPrice.toFixed(2) : 'N/A'}</strong>
                                 </div>
-                                <div class="d-flex justify-content-between">
-                                    <span>Lowest Price:</span>
-                                    <span>
-                                        <strong>$${lowestPrice !== null ? lowestPrice : 'N/A'}</strong>
-                                        ${formatDiff(diffLowestLatest)}
-                                    </span>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <span>Previous Price:</span>
-                                    <span>
-                                        <strong>$${prevPrice !== null ? prevPrice : 'N/A'}</strong>
-                                        ${formatDiff(diffFirstPrev)}
-                                    </span>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <span>Current Price:</span>
-                                    <span>
-                                        <strong>$${latestPrice !== null ? latestPrice : 'N/A'}</strong>
-                                        ${formatDiff(diffPrevLatest)}
-                                    </span>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <span>Total Change:</span>
-                                    <span>
-                                        <strong>${priceChange || 'N/A'}</strong>
-                                        ${formatDiff(diffFirstLatest)}
-                                    </span>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 bg-light rounded">
+                                    <small class="text-muted d-block">First</small>
+                                    <strong>$${firstPrice !== null ? firstPrice.toFixed(2) : 'N/A'}</strong>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer text-muted d-none">
-                            <small>
-                                First: ${firstDate}<br>
-                                Previous: ${prevDate}<br>
-                                Last updated: ${latestDate}
-                            </small>
+                        
+                        <div class="total-change mt-3">
+                            <small class="text-muted">Total Change:</small>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar ${diffFirstLatest > 0 ? 'bg-danger' : 'bg-success'}" 
+                                     role="progressbar" 
+                                     style="width: ${Math.abs(diffFirstLatest) / firstPrice * 100}%">
+                                </div>
+                            </div>
+                            <small class="d-block text-end">${formatDiff(diffFirstLatest)}</small>
                         </div>
                     </div>
-                `;
+                </div>
+                <div class="card-footer bg-transparent">
+                    <small class="text-muted">
+                        Last updated: ${latestDate}
+                    </small>
+                </div>
+            </div>
+        `;
         card.addEventListener('click', () => renderChart(product));
         productGrid.appendChild(card);
 
@@ -201,7 +199,7 @@ function filterCards() {
 
     cards.forEach(card => {
         const title = card.querySelector('.card-title a').textContent.toLowerCase();
-        const priceChange = card.querySelector('.card-body .d-flex:nth-child(4) strong').textContent;
+        const priceChange = card.querySelector('.price-change').textContent;
 
         if (title.includes(searchQuery) && (selectedValue === 'all' || (selectedValue === 'increase' && priceChange.includes('↑')) || (selectedValue === 'decrease' && priceChange.includes('↓')))) {
             card.parentElement.style.display = '';
