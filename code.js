@@ -36,19 +36,28 @@ document.addEventListener('DOMContentLoaded', async function () {
         const latestPrice = latestEntry ? parsePrice(latestEntry.price) : null;
         const prevPrice = prevEntry ? parsePrice(prevEntry.price) : null;
 
+        // Find the lowest price in the product's history
+        const lowestPrice = product.history.reduce((min, entry) => {
+            const price = parsePrice(entry.price);
+            return (price !== null && price < min) ? price : min;
+        }, Infinity);
+
         // Calculate differences
         const diffFirstPrev = (prevPrice !== null && firstPrice !== null) ? prevPrice - firstPrice : null;
         const diffPrevLatest = (latestPrice !== null && prevPrice !== null) ? latestPrice - prevPrice : null;
         const diffFirstLatest = (latestPrice !== null && firstPrice !== null) ? latestPrice - firstPrice : null;
+        const diffLowestLatest = (latestPrice !== null && lowestPrice !== null) ? lowestPrice - latestPrice : null;
 
         // Price changes
         let priceChange = null;
         if (diffPrevLatest !== null) {
-            priceChange = diffPrevLatest > 0
-                ? '<span class="text-danger">↑ Increase</span>'
-                : diffPrevLatest < 0
-                    ? '<span class="text-success">↓ Decrease</span>'
-                    : '<span class="text-muted">No Change</span>';
+            if (diffPrevLatest > 0) {
+                priceChange = '<span class="text-danger">↑ Increase</span>';
+            } else if (diffPrevLatest < 0) {
+                priceChange = '<span class="text-success">↓ Decrease</span>';
+            } else {
+                priceChange = '<span class="text-muted">No Change</span>';
+            }
         }
 
         // Dates
@@ -83,6 +92,13 @@ document.addEventListener('DOMContentLoaded', async function () {
                                     <span>
                                         <strong>$${firstPrice !== null ? firstPrice : 'N/A'}</strong>
                                         ${formatDiff(null)}
+                                    </span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Lowest Price:</span>
+                                    <span>
+                                        <strong>$${lowestPrice !== null ? lowestPrice : 'N/A'}</strong>
+                                        ${formatDiff(diffLowestLatest)}
                                     </span>
                                 </div>
                                 <div class="d-flex justify-content-between">
@@ -194,5 +210,6 @@ function filterCards() {
         }
     });
 }
+
 searchInput.addEventListener('input', filterCards);
 changeTypeSelect.addEventListener('change', filterCards);
