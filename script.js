@@ -189,12 +189,13 @@ function renderChart(product) {
 }
 
 // Search and filter functionality
-const changeTypeSelect = document.getElementById('changeType');
+const changeTypeSelector = document.getElementById('typeSelector');
 const searchInput = document.getElementById('searchInput');
+const orderSelector = document.getElementById('orderSelector');
 
 function filterCards() {
     const searchQuery = searchInput.value.toLowerCase();
-    const selectedValue = changeTypeSelect.value;
+    const selectedValue = changeTypeSelector.value;
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
@@ -209,5 +210,22 @@ function filterCards() {
     });
 }
 
+function sortCards() {
+    const productGrid = document.getElementById('productGrid');
+    const cols = Array.from(productGrid.querySelectorAll('.col'));
+    const order = orderSelector.value;
+
+    cols.sort((a, b) => {
+        const priceA = parseFloat(a.querySelector('.current-price-section .fs-4').textContent.replace(/[^0-9.-]+/g, ''));
+        const priceB = parseFloat(b.querySelector('.current-price-section .fs-4').textContent.replace(/[^0-9.-]+/g, ''));
+        return order === 'asc' ? priceA - priceB : order === 'desc' ? priceB - priceA : 0;
+    });
+
+    // Remove all .col elements before re-inserting
+    cols.forEach(col => productGrid.removeChild(col));
+    cols.forEach(col => productGrid.appendChild(col));
+}
+
 searchInput.addEventListener('input', filterCards);
-changeTypeSelect.addEventListener('change', filterCards);
+changeTypeSelector.addEventListener('change', filterCards);
+orderSelector.addEventListener('change', sortCards);
