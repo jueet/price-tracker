@@ -1,3 +1,37 @@
+// Store Chart.js instance globally
+let chartInstance = null;
+
+// Search and filter functionality
+const changeTypeSelector = document.getElementById('typeSelector');
+const searchInput = document.getElementById('searchInput');
+const orderSelector = document.getElementById('orderSelector');
+
+// Add at the beginning of your DOMContentLoaded event listener
+const gridViewBtn = document.getElementById('gridViewBtn');
+const tableViewBtn = document.getElementById('tableViewBtn');
+const productGrid = document.getElementById('productGrid');
+const productTable = document.getElementById('productTable');
+const tableBody = productTable.querySelector('tbody');
+
+// View toggle functions
+function showGridView() {
+    productGrid.classList.remove('d-none');
+    productTable.classList.add('d-none');
+    gridViewBtn.classList.add('active');
+    tableViewBtn.classList.remove('active');
+}
+
+function showTableView() {
+    productGrid.classList.add('d-none');
+    productTable.classList.remove('d-none');
+    gridViewBtn.classList.remove('active');
+    tableViewBtn.classList.add('active');
+}
+
+// Add event listeners
+gridViewBtn.addEventListener('click', showGridView);
+tableViewBtn.addEventListener('click', showTableView);
+
 document.addEventListener('DOMContentLoaded', async function () {
     const productGrid = document.getElementById('productGrid');
 
@@ -19,8 +53,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             history: product.history
         };
     });
-
-    // console.log(productsData);
 
     // Populate the table with product data
     productsData.forEach((product, idx) => {
@@ -132,13 +164,36 @@ document.addEventListener('DOMContentLoaded', async function () {
             </div>
         `;
         card.addEventListener('click', () => renderChart(product));
+
+        // Create table row
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>
+            <div class="d-flex align-items-center">
+                <img src="${product.image_url}" alt="" class="me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                <a href="${product.url}" target="_blank" class="text-decoration-none">${product.title}</a>
+            </div>
+        </td>
+        <td>$${latestPrice !== null ? latestPrice.toFixed(2) : 'N/A'}</td>
+        <td>${priceChange || 'N/A'} ${formatDiff(diffPrevLatest)}</td>
+        <td>$${lowestPrice !== null ? lowestPrice.toFixed(2) : 'N/A'}</td>
+        <td>$${firstPrice !== null ? firstPrice.toFixed(2) : 'N/A'}</td>
+        <td>${latestDate}</td>
+    `;
+
+        // Add click handler for chart
+        row.style.cursor = 'pointer';
+        row.setAttribute('data-bs-toggle', 'modal');
+        row.setAttribute('data-bs-target', '#exampleModal');
+        row.addEventListener('click', () => renderChart(product));
+
+        // Append elements
         productGrid.appendChild(card);
+        tableBody.appendChild(row);
 
         if (idx === 0) renderChart(product);
     });
 });
-
-let chartInstance = null; // Store Chart.js instance globally
 
 function renderChart(product) {
     const modalTitle = document.getElementById('chartModalLabel');
@@ -188,11 +243,6 @@ function renderChart(product) {
     });
 }
 
-// Search and filter functionality
-const changeTypeSelector = document.getElementById('typeSelector');
-const searchInput = document.getElementById('searchInput');
-const orderSelector = document.getElementById('orderSelector');
-
 function filterCards() {
     const searchQuery = searchInput.value.toLowerCase();
     const selectedValue = changeTypeSelector.value;
@@ -208,6 +258,21 @@ function filterCards() {
             card.parentElement.style.display = 'none';
         }
     });
+
+    // Filter table rows
+    const rows = tableBody.querySelectorAll('tr');
+    rows.forEach(row => {
+        const title = row.querySelector('a').textContent.toLowerCase();
+        const priceChange = row.querySelector('td:nth-child(3)').textContent;
+
+        if (title.includes(searchQuery) && (selectedValue === 'all' ||
+            (selectedValue === 'increase' && priceChange.includes('↑')) ||
+            (selectedValue === 'decrease' && priceChange.includes('↓')))) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
 }
 
 function sortCards() {
@@ -215,6 +280,7 @@ function sortCards() {
     const cols = Array.from(productGrid.querySelectorAll('.col'));
     const order = orderSelector.value;
 
+    // Sort grid
     cols.sort((a, b) => {
         const priceA = parseFloat(a.querySelector('.current-price-section .fs-4').textContent.replace(/[^0-9.-]+/g, ''));
         const priceB = parseFloat(b.querySelector('.current-price-section .fs-4').textContent.replace(/[^0-9.-]+/g, ''));
@@ -224,6 +290,16 @@ function sortCards() {
     // Remove all .col elements before re-inserting
     cols.forEach(col => productGrid.removeChild(col));
     cols.forEach(col => productGrid.appendChild(col));
+
+    // Sort table
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    rows.sort((a, b) => {
+        const priceA = parseFloat(a.querySelector('td:nth-child(2)').textContent.replace(/[^0-9.-]+/g, ''));
+        const priceB = parseFloat(b.querySelector('td:nth-child(2)').textContent.replace(/[^0-9.-]+/g, ''));
+        return order === 'asc' ? priceA - priceB : order === 'desc' ? priceB - priceA : 0;
+    });
+
+    rows.forEach(row => tableBody.appendChild(row));
 }
 
 searchInput.addEventListener('input', filterCards);

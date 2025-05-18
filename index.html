@@ -18,7 +18,7 @@
             <p class="text-center">Track the price of your favorite products!</p>
             <div class="mb-3">
                 <div class="row g-3">
-                    <div class="col-12 col-md-8">
+                    <div class="col-12 col-md-7">
                         <input type="text" id="searchInput" class="form-control" placeholder="Search for products...">
                     </div>
                     <div class="col-6 col-md-2">
@@ -28,17 +28,46 @@
                             <option value="decrease">Decrease</option>
                         </select>
                     </div>
-                    <div class="col-6 col-md-2">
+                    <div class="col-6 col-md-3">
                         <select name="orderSelector" id="orderSelector" class="form-select">
                             <option value="default">Default</option>
-                            <option value="asc">Ascendant</option>
-                            <option value="desc">Descendant</option>
+                            <option value="asc">Lowest to Highest</option>
+                            <option value="desc">Highest to Lowest</option>
                         </select>
+                    </div>
+                    <div class="col-12 text-end">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-primary active" id="gridViewBtn">
+                                <i class="bi bi-grid"></i> Grid
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="tableViewBtn">
+                                <i class="bi bi-table"></i> Table
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3" id="productGrid">
                 <!-- Product cards will be inserted here -->
+            </div>
+
+            <!-- Add table container after productGrid -->
+            <div class="table-responsive d-none" id="productTable">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Current Price</th>
+                            <th>Change</th>
+                            <th>Lowest Price</th>
+                            <th>First Price</th>
+                            <th>Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
 
             <!-- Modal -->
