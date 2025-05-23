@@ -1504,6 +1504,10 @@
       {
         "timestamp": "2025-05-22T06:54:59.393691+00:00",
         "price": "598.15"
+      },
+      {
+        "timestamp": "2025-05-23T08:12:35.725282+00:00",
+        "price": "578.32"
       }
     ]
   },
@@ -1763,6 +1767,105 @@
       {
         "timestamp": "2025-05-22T06:55:06.751694+00:00",
         "price": "295.20"
+      }
+    ]
+  },
+  "558147747c5881a5eb8b0ff0ef2f399e": {
+    "url": "https://www.buscalibre.com.mx/libro-la-ira-de-n-kai/9788445008027/p/53789908",
+    "title": "La ira de n kai",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/db/fa/dbfa31c442e4b9933ce222a65276d0d9.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:40.377554+00:00",
+        "price": "262.80"
+      }
+    ]
+  },
+  "5901576474604b9dae70fb18994ef3d4": {
+    "url": "https://www.buscalibre.com.mx/libro-aventuras-a-medianoche-mex/9786077486664/p/54934957",
+    "title": "AVENTURAS A MEDIANOCHE (MEX)",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/f4/29/f42912296d986452b353851a16206ce0.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:40.557690+00:00",
+        "price": "213.50"
+      }
+    ]
+  },
+  "a606571b1f4c4719a972cd47c905fc2d": {
+    "url": "https://www.buscalibre.com.mx/libro-el-ascenso-de-kyoshi-pasta-blanda/9786075931128/p/63397866",
+    "title": "El ascenso de Kyoshi (Pasta Blanda)",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/fb/cc/fbcc62da70f7304aae3fa46a3c2ae537.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:40.745553+00:00",
+        "price": "348.50"
+      }
+    ]
+  },
+  "138969dde357ac0760e4b1c2c13c4e3c": {
+    "url": "https://www.buscalibre.com.mx/libro-la-sombra-de-kyoshi-pasta-blanda/9786075965710/p/63397867",
+    "title": "La sombra de Kyoshi (Pasta Blanda)",
+    "image_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/e0/29/e02967ab0b6dc166c5844a25e62dc922.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:40.897836+00:00",
+        "price": "348.50"
+      }
+    ]
+  },
+  "ab84d6b69fb31b76316ca56939b9aa43": {
+    "url": "https://www.buscalibre.com.mx/libro-las-brigadas-fantasma-n-02-06-ne/9788445013298/p/54216635",
+    "title": "Las Brigadas Fantasma nº 02/06 (Ne)",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/7a/90/7a9074156cee627bc1a3b5c3e4bf3c8e.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:41.099205+00:00",
+        "price": "256.80"
+      }
+    ]
+  },
+  "116168b487b946744070ca4b29eaa209": {
+    "url": "https://www.buscalibre.com.mx/libro-la-vieja-guardia-n-01-06-ne/9788445013281/p/54216634",
+    "title": "La Vieja Guardia nº 01/06 (Ne)",
+    "image_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/42/b3/42b3f391936bf244a1b9f949259373e4.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:41.293381+00:00",
+        "price": "256.80"
+      }
+    ]
+  },
+  "5e295f8de9c175f83596db0a1a657692": {
+    "url": "https://www.buscalibre.com.mx/libro-letania-de-los-suenos/9788445011638/p/54051446",
+    "title": "Letanía de los Sueños",
+    "image_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/4f/53/4f5314687114623df33bef8671a91f36.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:41.562411+00:00",
+        "price": "274.80"
+      }
+    ]
+  },
+  "54269c4f00c31b9517cfd6e216b1604a": {
+    "url": "https://www.buscalibre.com.mx/libro-mascara-de-acero/9788445011591/p/53912038",
+    "title": "Máscara de Acero",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/ea/b7/eab73b069a5ad8450c587095a21bd17a.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:41.758778+00:00",
+        "price": "280.80"
+      }
+    ]
+  },
+  "ee85d145e138cef032505f69b9fc0247": {
+    "url": "https://www.buscalibre.com.mx/libro-dungeons-dragons-honor-entre-ladrones-vocacion-de-druida/9788445014943/p/54476953",
+    "title": "Dungeons & Dragons: Honor Entre Ladrones. Vocacion de Druida",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/b8/f4/b8f40258580c06ef8692a3f910df97ce.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-23T08:12:41.962026+00:00",
+        "price": "292.80"
       }
     ]
   }
