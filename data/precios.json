@@ -2044,5 +2044,49 @@
         "price": "292.80"
       }
     ]
+  },
+  "95873ac19f6e88f76d3a4ce6a4881230": {
+    "url": "https://www.buscalibre.com.mx/libro-los-ojos-de-mona/9786287658233/p/61187296",
+    "title": "Los Ojos de Mona",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/59/b6/59b62e7f305c94fc11ba7e266816bb56.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-26T06:40:12.919188+00:00",
+        "price": "363.24"
+      }
+    ]
+  },
+  "c5adfee9e4356b04951a4aefcc94a020": {
+    "url": "https://www.buscalibre.com.mx/libro-mareas-de-medianoche/9788417347222/p/50589983",
+    "title": "Mareas de Medianoche",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/12/bc/12bcec6b2dbda246e170f61ba5730bc7.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-26T06:40:13.047093+00:00",
+        "price": "307.32"
+      }
+    ]
+  },
+  "bcb20aa185bed69e579bd4826340b9ec": {
+    "url": "https://www.buscalibre.com.mx/libro-forjada-en-la-tormenta/9788491297000/p/54057230",
+    "title": "Forjada en la tormenta",
+    "image_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/d5/40/d540fa4c2f69fdf55b9c62cad6f38ba6.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-26T06:40:13.475880+00:00",
+        "price": "275.93"
+      }
+    ]
+  },
+  "f0ba348f2638eeb1951f94ad9e7251af": {
+    "url": "https://www.buscalibre.com.mx/libro-ocho-millones-de-dioses-eight-million-gods/9788491293620/p/51623371",
+    "title": "Ocho Millones de Dioses / Eight Million Gods",
+    "image_url": "https://images.cdn3.buscalibre.com/fit-in/360x360/ab/75/ab75cc613c03e197cd34a5ff5104ab05.jpg",
+    "history": [
+      {
+        "timestamp": "2025-05-26T06:40:13.600147+00:00",
+        "price": "286.39"
+      }
+    ]
   }
 }
