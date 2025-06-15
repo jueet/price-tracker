@@ -2,6 +2,8 @@
 
 A web scraper that tracks book prices from Buscalibre México and stores price history over time.
 
+**The scrapper was blocked by the website. It's no longer working.** :(
+
 ## Features
 
 - Scrapes book prices and titles from Buscalibre México URLs
